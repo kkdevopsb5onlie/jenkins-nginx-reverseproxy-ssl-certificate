@@ -44,20 +44,29 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 ```
 
-Nginx Webserver is installation
-Install Nginx: Install Nginx using the following command:
+# Install Nginx: Install Nginx using the following command:
+```
 sudo apt install nginx
-Start Nginx: Once the installation is complete, start the Nginx service:
+
+```
+# Start Nginx: Once the installation is complete, start the Nginx service. This command starts the Nginx service, and it will now be running on your EC2 instance.
+```
 sudo service nginx start
-This command starts the Nginx service, and it will now be running on your EC2 instance.
-Enable Nginx to Start on Boot: To ensure Nginx starts automatically when your server restarts, enable it as a startup service:
+```
+
+# Enable Nginx to Start on Boot: To ensure Nginx starts automatically when your server restarts, enable it as a startup service:
+```
 sudo systemctl enable nginx
-Verify Nginx Installation: Open your web browser and enter your EC2 instance's public IP address or domain name. You should see the default Nginx welcome page, indicating that Nginx is successfully installed and running.
+```
+# Verify Nginx Installation: Open your web browser and enter your EC2 instance's public IP address or domain name. You should see the default Nginx welcome page, indicating that Nginx is successfully installed and running.
 
 
 Create a Jenkins Server Block:
-Create a new Nginx server block configuration file for Jenkins. You can do this by creating a new file in the /etc/nginx/sites-available/ directory. Let's name it jenkins:
+# Create a new Nginx server block configuration file for Jenkins. You can do this by creating a new file in the /etc/nginx/sites-available/ directory. Let's name it jenkins:
+```
 sudo nano /etc/nginx/sites-available/jenkins
+
+```
 ```
 server {
     listen 80;
@@ -76,20 +85,25 @@ server {
     }
 }
 ```
-Enable the Jenkins Server Block:
-Create a symbolic link to the configuration file in the sites-enabled directory:
+# Enable the Jenkins Server Block. Create a symbolic link to the configuration file in the sites-enabled directory:
+```
 sudo ln -s /etc/nginx/sites-available/jenkins /etc/nginx/sites-enabled/
+```
 
-Test Nginx Configuration:
+# Test Nginx Configuration:
 1.	Before restarting Nginx, it's a good idea to test the configuration to make sure there are no syntax errors:
-sudo nginx -t 
+```
+sudo nginx -t
+```
 If the test is successful, you should see: nginx: configuration file /etc/nginx/nginx.conf test is successful.
-2.	Restart Nginx: Restart Nginx to apply the changes:
+3.	Restart Nginx: Restart Nginx to apply the changes:
 sudo systemctl restart nginx 
-3.	Access Jenkins: Open your web browser and navigate to http://jenkins.example.com. Replace jenkins.example.com with your actual domain. You should now be able to access Jenkins through Nginx.
+4.	Access Jenkins: Open your web browser and navigate to http://jenkins.example.com. Replace jenkins.example.com with your actual domain. You should now be able to access Jenkins through Nginx.
 
 
-SSL certificate applied to Domain .
+## SSL certificate applied to Domain .
+```
 sudo apt install python3-certbot-nginx
 certbot --version
-certbot --nginx -d xyz.com
+certbot --nginx -d xyz.com (replace your domain name here(xyx.com))
+```
