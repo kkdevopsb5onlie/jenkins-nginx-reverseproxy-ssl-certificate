@@ -33,20 +33,25 @@
 }
 
 ```
+```
+sudo ln -s /etc/nginx/sites-available/jenkins /etc/nginx/sites-enabled/ #  nginx  nginx reverse proxy  solft link
+sudo nginx -t # check syntax of nginx configuration properly configured or not
+sudo systemctl restart nginx # restart nginx to reflect
 
-6. sudo ln -s /etc/nginx/sites-available/jenkins /etc/nginx/sites-enabled/
-
-7. sudo nginx -t
-
-8. sudo systemctl restart nginx
+ ```
 
 8. we need to add Jenkins server public IP/elastic ip in godady domaine name entry like below screenshot 
 
 ## Adding ssl certificate by using  certbot in amazon linux
   --------------------------------------------------------
+  # install cerbot and depedencies
+   ```
+   sudo dnf install -y certbot python3-certbot-nginx
+   certbot --version
+   ```
+# Add dns name with certbot
+  ```
+  sudo certbot --nginx -d jenkins.arjun-devops.xyz
 
-1. sudo dnf install -y certbot python3-certbot-nginx
-
-2. certbot --version
-
-3. sudo certbot --nginx -d jenkins.arjun-devops.xyz -- after executing this command it will ask email id and then it will ask proceed yes.
+```
+ # After executing above command it will ask email id and then it will ask proceed yes.
