@@ -5,15 +5,15 @@
 2. Install nginx 
 3. sudo mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
 4. sudo vi /etc/nginx/nginx.conf
-   ```
+```
    
    include /etc/nginx/conf.d/*.conf;
    include /etc/nginx/sites-enabled/*;
 
-  ```
+```
 6. sudo vi /etc/nginx/sites-available/Jenkins
 
-```
+ ```
    server {
     listen 80;
 
